@@ -1,0 +1,10 @@
+.home {
+    background-color: #000000;
+    min-height: 100vh;
+    color: white;
+  }
+
+  .home__chart {
+      width: 30%;
+      height: 30%;
+  }
