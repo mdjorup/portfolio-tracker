@@ -1,0 +1,69 @@
+.header {
+    position: sticky;
+    display: flex;
+    height: 70px;
+
+}
+
+.header__icon {
+    flex: 1;
+    min-width: 100px;
+
+    
+}
+
+.header__searchbar {
+    flex: 2;
+    min-width: 300px;
+}
+
+.header__options {
+    flex: 3;
+}
+
+
+.app__icon {
+    color: #00C805;
+    margin-left: 30%;
+    padding-top: 15px;
+}
+
+.search__icon {
+    padding-right: 7px;
+    padding-left: 5px;
+    margin-top: 4px;
+    
+}
+
+.search {
+    border: 1px solid #282828;
+    width: 98%;
+    height: 32px;
+    display: flex;
+    background-color: transparent;
+    border-radius: 4px;
+    color: gray;
+    margin-top: 15px;
+    
+}
+.search > input {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    outline: none;
+    resize: none;
+    color: gray;
+}
+
+.search:hover {
+    background-color: #282828;
+}
+.search:focus-within {
+    background-color: #282828;
+    color: white;
+}
+
+.search > input:focus {
+    color: white;
+    
+}
