@@ -6,7 +6,33 @@ import {AiOutlineStock} from 'react-icons/ai';
 import {FiSearch} from 'react-icons/fi';
 //#00C805
 
+
+const HeaderOption = ({text, notification}) => {
+
+
+  return (
+    <div className='headeroption'>
+      <p>{text}</p>
+      {notification && <div className='headeroption__icon'>
+        <span className="material-symbols-outlined">
+          exclamation
+        </span>
+      </div>}
+
+
+    </div>
+  )
+}
+
 function Header() {
+
+
+  const headerOptionSettings = [
+    {"text": "Portfolio", "notification": false},
+    {"text": "Messages", "notification": true},
+    {"text": "Account", "notification": false},
+  ]
+
   return (
       <div className='header'>
         <div className="header__icon">
@@ -19,7 +45,7 @@ function Header() {
           </div>
         </div>
         <div className='header__options'>
-
+          {headerOptionSettings.map(e => <HeaderOption text={e.text} notification={e.notification}/>)}
         </div>
 
       </div>

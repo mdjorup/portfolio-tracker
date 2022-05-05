@@ -19,6 +19,11 @@
 
 .header__options {
     flex: 3;
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 50px;
+    
 }
 
 
@@ -67,3 +72,35 @@
     color: white;
     
 }
+
+.headeroption {
+    color: white;
+    font-size: small;
+    cursor: pointer;
+    width: fit-content;
+    padding: 10px 15px 5px 15px;
+    position: relative;
+}
+
+.headeroption:hover {
+    color: #00C805;
+}
+.headeroption__icon {
+    color: #000000;
+    background-color: #FF5000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+}
+
+.material-symbols-outlined {
+    font-size: 14px;
+    font-weight: bolder;
+}
+
