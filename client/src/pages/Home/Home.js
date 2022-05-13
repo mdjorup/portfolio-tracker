@@ -40,7 +40,7 @@ const Home = () => {
 
     const startDate = new Date(2020, 0, 1);
     const labels = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 20; i++) {
         const date = moment(startDate).add(i, 'days').format('MM-DD');
         labels.push(date.toString());
     }
@@ -52,7 +52,7 @@ const Home = () => {
             xAxisID: 'xAxis',
             label: "Dataset 1",
             backgroundColor: "rgb(0, 200, 5)",
-            borderColor: "rgb(0, 200, 5",
+            borderColor: "rgb(0, 200, 5)",
             data: [100, 105, 103, 106, 107, 110]
             
         }]
@@ -64,7 +64,6 @@ const Home = () => {
             <div className='home__chart'>
                 <Line options={options} data={data}/>
             </div>
-            {labels.map(e => e)}
             
         </div>
     )

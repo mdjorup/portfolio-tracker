@@ -36,11 +36,11 @@ function Header() {
   return (
       <div className='header'>
         <div className="header__icon">
-          <AiOutlineStock className='app__icon' size={35}/>
+          <AiOutlineStock className='app__icon' size='2.25em'/>
         </div>
         <div className="header__searchbar">
           <div className="search">
-            <FiSearch className='search__icon' size={22}/>
+            <FiSearch className='search__icon' size='1.4em'/>
             <input className='search__input' type='text' placeholder='Search'/> 
           </div>
         </div>

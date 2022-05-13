@@ -1,20 +1,22 @@
 .header {
     position: sticky;
     display: flex;
-    height: 70px;
+    height: 4em;
 
 }
 
 .header__icon {
     flex: 1;
-    min-width: 100px;
-
+    min-width: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     
 }
 
 .header__searchbar {
     flex: 2;
-    min-width: 300px;
+    min-width: 20em;
 }
 
 .header__options {
@@ -22,15 +24,13 @@
     display: flex;
     justify-content: right;
     align-items: center;
-    padding-right: 50px;
+    padding-right: 3em;
     
 }
 
 
 .app__icon {
     color: #00C805;
-    margin-left: 30%;
-    padding-top: 15px;
 }
 
 .search__icon {
