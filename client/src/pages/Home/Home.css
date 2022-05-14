@@ -4,7 +4,11 @@
     color: white;
   }
 
-  .home__chart {
-      width: 40%;
-      height: 40%;
-  }
+.home__body {
+    padding: 2em 15% 2em 15%;
+}
+
+.home__chart {
+    width: 32em;
+    
+}

@@ -12,8 +12,11 @@ const Home = () => {
     return(
         <div className='home'>
             <Header /> 
-            <div className='home__chart'>
-                <MainChart timeframes={["5d", "1m", "3m", "6m", "1y", "2y", "ALL"]}/>
+            <div className='home__body'>
+                <div className='home__chart'>
+                    <MainChart timeframes={["5d", "1m", "3m", "6m", "1y", "2y", "ALL"]}/>
+                </div>
+                
             </div>
             
         </div>

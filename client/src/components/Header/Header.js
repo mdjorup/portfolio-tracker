@@ -45,7 +45,7 @@ function Header() {
           </div>
         </div>
         <div className='header__options'>
-          {headerOptionSettings.map(e => <HeaderOption text={e.text} notification={e.notification}/>)}
+          {headerOptionSettings.map((e, i) => <HeaderOption key={i} text={e.text} notification={e.notification}/>)}
         </div>
 
       </div>
