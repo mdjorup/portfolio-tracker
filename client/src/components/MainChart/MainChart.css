@@ -1,3 +1,7 @@
+:root {
+    --color-theme: blue;
+}
+
 .mainchart__balance {
     font-size: xx-large;
     font-weight: 500;
@@ -18,16 +22,16 @@
     font-size: 0.9em;
     font-weight: 500;
     border-bottom: 2px solid transparent;
-    padding: 10px 8px 5px 8px;
+    padding: 10px 8px 10px 8px;
     cursor: pointer;
 }
 
 .timeframe__option:hover {
-    color: #00C805;
+    color: var(--color-theme);
 }
 
 .selected {
-    border-bottom: 2px solid #00C805;
-    color: #00C805;
+    border-bottom: 2px solid var(--color-theme);
+    color: var(--color-theme);
 
 }
