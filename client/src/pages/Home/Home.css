@@ -6,9 +6,17 @@
 
 .home__body {
     padding: 2em 15% 2em 15%;
+    display: flex;
+    
 }
 
 .home__chart {
     width: 32em;
     
+}
+
+.home__positions {
+    background-color: #181818;
+    height: min-content;
+    border-radius: 4px;
 }

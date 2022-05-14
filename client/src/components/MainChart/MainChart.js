@@ -48,7 +48,7 @@ const MainChart = ({timeframes}) => {
         
         // fetch data for the current time frame and dispatch
         // color setting based on that data
-        balanceData.balances.at(-1) >= balanceData.balances.at(0) ? setColor("#00C805") : setColor("#FF0500")
+        balanceData.balances.at(-1) >= balanceData.balances.at(0) ? setColor("#00C805") : setColor("#C80500")
         
     }, [currentTimeframe])
 
@@ -107,7 +107,7 @@ const MainChart = ({timeframes}) => {
 
     return (
         <div className='mainchart' style={{"--color-theme": color}}>
-            <p className='mainchart__balance'>{"$" + balanceData.balances[balanceData.balances.length-1].toFixed(2).toString()}</p>
+            <p className='mainchart__balance'>{"$" + balanceData.balances[balanceData.balances.length-1].toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</p>
             <p className='mainchart__description'>{generateDescription()}</p>
             <Line options={options} data={chartData}/> 
             <div className='timeframe__options'>
