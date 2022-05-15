@@ -5,8 +5,10 @@
   }
 
 .home__body {
-    padding: 2em 15% 2em 15%;
+    margin: 0 15% 0 15%;
+    padding: 2em 0 2em 0;
     display: flex;
+    justify-content: space-evenly;
     
 }
 
