@@ -1,12 +1,10 @@
-from curses import use_default_colors
-from distutils.command.build import build
 import boto3
 import os
 import asyncio
 import crypt
 
 # other functions
-from utils.util import *
+from utils.util import build_response
 
 
 table_name = 'portfolio-users'
@@ -31,7 +29,7 @@ async def register(userInfo):
     password = userInfo['password']
 
     if not name or not email or not username or not password:
-        return buildResponse(401, {
+        return build_response(401, {
             "message": "All fields are required"
         })
 
@@ -39,7 +37,7 @@ async def register(userInfo):
     dynamoUser = await getUser(username.lower().strip())
 
     if dynamoUser and dynamoUser['username']:
-        return buildResponse(401, {
+        return build_response(401, {
             'message': "User already exists in database"
         })
 
@@ -55,11 +53,11 @@ async def register(userInfo):
 
     saveUserResponse = await saveUser(user)
     if not saveUserResponse:
-        return buildResponse(503, {
+        return build_response(503, {
             "message": "Server Error. Try again Later"
         })
     
-    return buildResponse(200, {
+    return build_response(200, {
         "message": "User Registered Successfully",
         "username": username
     })
@@ -67,13 +65,5 @@ async def register(userInfo):
     # if unable to save user, return 503 response
 
     # if able to save user, send a 200 response with a success message and username
-
-
-
-
-    
-
-
-
 
 
