@@ -1,2 +1,4 @@
-package/
+venv/
 *.zip
+.aws/
+.vscode/

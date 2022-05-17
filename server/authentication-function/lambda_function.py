@@ -1,5 +1,6 @@
 import json
-
+import requests
+import boto3
 # https://docs.aws.amazon.com/lambda/latest/dg/python-package.html
 # https://pypi.org/project/boto3/
 # 1. reset folder - create virtual environment instead
@@ -31,13 +32,10 @@ def lambda_handler(event, context):
     if event['httpMethod'] == "GET" and event['path'] == healthPath:
         response = buildResponse(200)
     elif event['httpMethod'] == "POST" and event['path'] == registerPath:
-        registerBody = json.loads(event['body'])
         response = buildResponse(200)
     elif event['httpMethod'] == "POST" and event['path'] == loginPath:
-        loginBody = json.loads(event['body'])
         response = buildResponse(200)
     elif event['httpMethod'] == "POST" and event['path'] == verifyPath:
-        verifyBody = json.loads(event['body'])
         response = buildResponse(200)
     else:
         response = buildResponse(404, "404 Not Found")
