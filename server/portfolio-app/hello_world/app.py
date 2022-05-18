@@ -1,5 +1,9 @@
 import json
 
+# for the API gateway testing stuff:
+#https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-getting-started-hello-world.html
+
+
 def lambda_handler(event, context):
     """Sample pure Lambda function
 
@@ -30,16 +34,13 @@ def lambda_handler(event, context):
 
     #     raise e
 
-
-    first_name = event['first_name']
-    last_name = event['last_name']
-    message = event['message']
     return {
         "statusCode": 200,
-        "body": json.dumps(
-            {
-                "message": f"{message} {first_name} {last_name}"
-                # "location": ip.text.replace("\n", "")
-            }
-        ),
+        "headers": {
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json"
+        },
+        "body": json.dumps({
+            "message": "It worked!"
+        })
     }
