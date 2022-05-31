@@ -1,0 +1,62 @@
+{
+    "configurations": [
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "hello_world:app.lambda_handler (python3.9)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/server/portfolio-app/hello_world",
+                "lambdaHandler": "app.lambda_handler"
+            },
+            "lambda": {
+                "runtime": "python3.9",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "hello_world:app.lambda_handler (python3.9)",
+            "invokeTarget": {
+                "target": "code",
+                "projectRoot": "${workspaceFolder}/server/portfolio-app/hello_world",
+                "lambdaHandler": "app.lambda_handler"
+            },
+            "lambda": {
+                "runtime": "python3.9",
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "portfolio-app:HelloWorldFunction",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/server/portfolio-app/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        },
+        {
+            "type": "aws-sam",
+            "request": "direct-invoke",
+            "name": "portfolio-app:HelloWorldFunction",
+            "invokeTarget": {
+                "target": "template",
+                "templatePath": "${workspaceFolder}/server/portfolio-app/template.yaml",
+                "logicalId": "HelloWorldFunction"
+            },
+            "lambda": {
+                "payload": {},
+                "environmentVariables": {}
+            }
+        }
+    ]
+}
