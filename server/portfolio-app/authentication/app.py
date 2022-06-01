@@ -19,7 +19,9 @@ def lambda_handler(event, context):
 
     path = event.get("path", "doesn't work")
     method = event.get("httpMethod", "doesn't work")
-    body = json.loads(event.get("body", ""))
+    body = event.get("body", "")
+    if body:
+        body = json.loads(body)
 
 
     if path == healthPath and method == "GET":
