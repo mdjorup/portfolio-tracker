@@ -37,10 +37,10 @@ def get_user_by_username(username):
 
 def register(body):
 
-    name = body.get("name")
-    username = body.get("username")
-    email = body.get("email")
-    password = body.get("password").encode()
+    name = body.get("name", "")
+    username = body.get("username", "")
+    email = body.get("email", "")
+    password = body.get("password", "").encode()
 
     if not name or not username or not email or not password:
         return build_response(400, "Incomplete request body")
@@ -78,13 +78,38 @@ def register(body):
     })
 
 
-
-
-
-
 def login(body):
-    return
+
+    username = body.get("username", "")
+    password = body.get("password", "").encode()
+
+    if not username or not password:
+        return build_response(400, "Incomplete request body")
+    
+    userinfo = get_user_by_username(username)
+
+    if not userinfo:
+        return build_response(400, "User DNE")
+    
+    encrypted_pw = userinfo.get("password")
+
+    if not bcrypt.checkpw(password, encrypted_pw):
+        return build_response(400, "Incorrect password")
+    
+    jwt_token = generate_jwt(username)
+
+    return build_response(200, {
+        "jwt": jwt_token,
+        "message": "Successfully Logged In"
+    })
 
 
 def verify(token):
-    return
+
+    try:
+        jwt.decode(token, jwt_secret, algorithms=['HS256'])
+        return build_response(200, "Valid JWT")
+    except jwt.exceptions.ExpiredSignatureError as ese:
+        return build_response(401, "Token Expired")
+    except jwt.exceptions.InvalidTokenError as ite:
+        return build_response(401, "Invalid Token")

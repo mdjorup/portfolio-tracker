@@ -4,7 +4,7 @@ import os
 # import requests
 # for testing dynamo db locally: https://medium.com/@suranjana.basu/test-your-lambda-with-aws-dynamodb-offline-locally-2efc45063fed
 
-from utils.logic import register
+from utils.logic import register, login, verify
 from utils.response import build_response
 
 
@@ -31,10 +31,10 @@ def lambda_handler(event, context):
         register_response = register(body)
         return register_response
     elif path == loginPath and method == "POST":
-        loginResponse = None
+        loginResponse = login(body)
         return loginResponse
     elif path == verifyPath and method == "POST":
-        verifyResponse = None
+        verifyResponse = verify(body.get("jwt", ""))
         return verifyResponse
     else:
         return build_response(400, event)
