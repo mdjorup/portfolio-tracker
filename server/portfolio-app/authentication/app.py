@@ -25,7 +25,9 @@ def lambda_handler(event, context):
 
 
     if path == healthPath and method == "GET":
-        return build_response(200, "Healthy")
+        return build_response(200, {
+            "message": "Healthy"
+        })
     elif path == registerPath and method == "POST":
         #do register logic, get register response
         register_response = register(body)

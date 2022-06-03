@@ -43,14 +43,20 @@ def register(body):
     password = body.get("password", "").encode()
 
     if not name or not username or not email or not password:
-        return build_response(400, "Incomplete request body")
+        return build_response(400, {
+            "error": "IncompleteRequestError",
+            "message": "Incomplete request. Please Fill in all fields"
+        })
 
     # check if user exists by username
 
     userinfo = get_user_by_username(username)
 
     if userinfo:
-        return build_response(409, "Username already exists")
+        return build_response(409, {
+            "error": "UserExistsError",
+            "message": "User with given username already exists"
+        })
     
     # add user to db
 
@@ -66,7 +72,10 @@ def register(body):
     try:
         users_collection.insert_one(user)
     except:
-        return build_response(500, "Unable to register user")
+        return build_response(500, {
+            "error": "ServerError",
+            "message": "Unable to register user to DB"
+        })
     
 
     # generate jwt
@@ -84,17 +93,26 @@ def login(body):
     password = body.get("password", "").encode()
 
     if not username or not password:
-        return build_response(400, "Incomplete request body")
+        return build_response(400, {
+            "error": "IncompleteRequestError",
+            "message": "Incomplete request. Please Fill in all fields"
+        })
     
     userinfo = get_user_by_username(username)
 
     if not userinfo:
-        return build_response(400, "User DNE")
+        return build_response(400, {
+            "error": "UserNotFoundError",
+            "message": "User not found. Please check username or Register as a new user."
+        })
     
     encrypted_pw = userinfo.get("password")
 
     if not bcrypt.checkpw(password, encrypted_pw):
-        return build_response(400, "Incorrect password")
+        return build_response(400, {
+            "error": "Unauthorized",
+            "message": "Incorrect password"
+        })
     
     jwt_token = generate_jwt(username)
 
@@ -108,8 +126,17 @@ def verify(token):
 
     try:
         jwt.decode(token, jwt_secret, algorithms=['HS256'])
-        return build_response(200, "Valid JWT")
+        return build_response(200, {
+            "status": "Success",
+            "message": "Valid JWT"
+        })
     except jwt.exceptions.ExpiredSignatureError as ese:
-        return build_response(401, "Token Expired")
+        return build_response(401, {
+            "error": "ExpiredSignatureError",
+            "message": "Token Expired. Log In Again"
+        })
     except jwt.exceptions.InvalidTokenError as ite:
-        return build_response(401, "Invalid Token")
+        return build_response(401, {
+            "error": "InvalidTokenError",
+            "message": "Invalid Token. Log In Again"
+        })

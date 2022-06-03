@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 import "./Auth.css"
 
 const Auth = ({register}) => {
@@ -37,6 +38,28 @@ const Auth = ({register}) => {
         }
     }
 
+
+    const handleClick = () => {
+        const req_body = {
+            "name": name,
+            "username": username,
+            "email": email,
+            "password": password
+        }
+
+        let endpoint;
+        if(register) {
+            endpoint = "https://s6j0yldn31.execute-api.us-east-1.amazonaws.com/Prod/auth/register"
+        } else {
+            endpoint = "https://s6j0yldn31.execute-api.us-east-1.amazonaws.com/Prod/auth/login"
+        }
+        axios.post(endpoint, req_body).then(response => console.log(response.data))
+        //need to catch errors
+        //also need to edit responses to contain actual information
+
+
+    }
+
     return (
         <div className='auth'>
             <div className="auth__box ">
@@ -45,7 +68,7 @@ const Auth = ({register}) => {
                 <input className='auth__input' type='text' placeholder='Username' onChange={handleChange}/> 
                 {register && <input className='auth__input' type='text' placeholder='Email' onChange={handleChange}/>} 
                 <input className='auth__input' type='text' placeholder='Password' onChange={handleChange}/> 
-                <button className={`submit ${buttonFill}`}>
+                <button className={`submit ${buttonFill}`} onClick={handleClick}>
                     Submit
                 </button>
             </div>
