@@ -1,6 +1,8 @@
 import React from 'react'
 import "./Home.css";
 import moment from 'moment'
+import { useDispatch, useSelector } from 'react-redux';
+
 
 //components
 import Header from '../../components/Header/Header';
@@ -10,6 +12,9 @@ import StockSnippet from '../../components/StockSnippet/StockSnippet';
 
 
 const Home = () => {
+
+    const user = useSelector((state) => state.user)
+
     return(
         <div className='home'>
             <Header /> 
@@ -23,8 +28,9 @@ const Home = () => {
                     <StockSnippet ticker="AMZN" price={14.007} dayPercent={12.345} dayDollar={45.7863}/>
                     <StockSnippet ticker="NVDA" price={150.007} dayPercent={-6.5} dayDollar={-24.98}/>
                 </div>
-
             </div>
+            {JSON.stringify(user)}
+
             
         </div>
     )

@@ -1,7 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import "./Auth.css"
+
+import { setUser } from '../../features/user/userSlice'
 
 const Auth = ({register}) => {
 
@@ -13,6 +16,7 @@ const Auth = ({register}) => {
     const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
 
     const [buttonFill, setButtonFill] = useState("unfilled")
@@ -63,6 +67,12 @@ const Auth = ({register}) => {
         }
         axios.post(endpoint, req_body).then(response => {
             // add jwt to state
+            console.log(response)
+            let jwt = response.data.jwt
+            dispatch(setUser({
+                "jwt": jwt,
+                "username": username
+            }))
             navigate("/")
             setLoading(false)
         })
