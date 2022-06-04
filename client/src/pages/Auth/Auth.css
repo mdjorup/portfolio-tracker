@@ -5,6 +5,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
 }
 
@@ -63,6 +64,26 @@
     background-color: transparent;
     border: 1px solid #282828;
     color: gray;
+}
+
+.error__message {
+    color: #C80500;
+    font-size: small;
+    font-weight: 500;
+}
+
+.other__login {
+    color: white;
+    font-size: medium;
+    font-weight: 100;
+    cursor: pointer;
+    position: absolute;
+    right: 4em;
+    top: 2em;
+
+}
+.other__login:hover {
+    color: #00C805;
 }
 
 

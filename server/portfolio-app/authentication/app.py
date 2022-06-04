@@ -14,7 +14,6 @@ loginPath = "/auth/login"
 verifyPath = "/auth/verify"
 
 
-
 def lambda_handler(event, context):
 
     path = event.get("path", "doesn't work")
@@ -23,13 +22,10 @@ def lambda_handler(event, context):
     if body:
         body = json.loads(body)
 
-
     if path == healthPath and method == "GET":
-        return build_response(200, {
-            "message": "Healthy"
-        })
+        return build_response(200, {"message": "Healthy"})
     elif path == registerPath and method == "POST":
-        #do register logic, get register response
+        # do register logic, get register response
         register_response = register(body)
         return register_response
     elif path == loginPath and method == "POST":
@@ -40,4 +36,3 @@ def lambda_handler(event, context):
         return verifyResponse
     else:
         return build_response(400, event)
-
