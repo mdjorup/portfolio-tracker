@@ -4,6 +4,7 @@ import './Header.css';
 //icons
 import {AiOutlineStock} from 'react-icons/ai';
 import {FiSearch} from 'react-icons/fi';
+import { useSelector } from 'react-redux';
 //#00C805
 
 
@@ -26,11 +27,13 @@ const HeaderOption = ({text, notification}) => {
 
 function Header() {
 
+  const user = useSelector((state) => state.user)
+
 
   const headerOptionSettings = [
     {"text": "Portfolio", "notification": false},
     {"text": "Messages", "notification": true},
-    {"text": "Account", "notification": false},
+    {"text": user.username, "notification": false},
   ]
 
   return (

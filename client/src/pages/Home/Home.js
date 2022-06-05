@@ -29,8 +29,6 @@ const Home = () => {
                     <StockSnippet ticker="NVDA" price={150.007} dayPercent={-6.5} dayDollar={-24.98}/>
                 </div>
             </div>
-            {JSON.stringify(user)}
-
             
         </div>
     )
