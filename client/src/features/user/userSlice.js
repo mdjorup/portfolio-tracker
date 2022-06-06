@@ -11,11 +11,15 @@ export const userSlice = createSlice({
         setUser: (state, action) => {
             state.jwt = action.payload.jwt
             state.username = action.payload.username
+        }, 
+        clearUser: (state, action) => {
+            state.jwt = ""
+            state.username = ""
         }
     }
 })
 
 //export the action reducers
-export const {setUser} = userSlice.actions;
+export const {setUser, clearUser} = userSlice.actions;
 
 export default userSlice.reducer

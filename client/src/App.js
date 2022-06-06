@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios'
 
 //functions
-import { setUser } from './features/user/userSlice';
+import { setUser, clearUser } from './features/user/userSlice';
 
 
 //pages
@@ -39,10 +39,7 @@ function App() {
       console.log("Successful JWT verification")
     }).catch(error => {
       console.log(error)
-      dispatch(setUser({
-        "jwt": "",
-        "username": ""
-      }))
+      dispatch(clearUser())
     })
 
 

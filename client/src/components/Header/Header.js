@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Header.css';
 
 //icons
@@ -8,18 +8,30 @@ import { useSelector } from 'react-redux';
 //#00C805
 
 
-const HeaderOption = ({text, notification}) => {
+const HeaderOption = ({text, notification, dropdownItems}) => {
+
+  const [dropdownActive, setDropdownActive] = useState(false)
+
+  const handleUsernameClick = () => {
+    setDropdownActive(!dropdownActive)
+  }
 
 
   return (
     <div className='headeroption'>
-      <p>{text}</p>
+      <p className='headeroption__text' onClick={handleUsernameClick}>{text}</p>
       {notification && <div className='headeroption__icon'>
         <span className="material-symbols-outlined">
           exclamation
         </span>
       </div>}
-
+      {dropdownActive && <div className='dropdown__menu'> 
+        {dropdownItems && dropdownItems.map((e, i) => (
+          <div className='dropdown__item'> 
+            {e}
+          </div>
+        ))}
+      </div>}
 
     </div>
   )
@@ -33,7 +45,7 @@ function Header() {
   const headerOptionSettings = [
     {"text": "Portfolio", "notification": false},
     {"text": "Messages", "notification": true},
-    {"text": user.username, "notification": false},
+    {"text": user.username, "notification": false, "dropdown": ["Profile", "Log Out"]},
   ]
 
   return (
@@ -48,7 +60,7 @@ function Header() {
           </div>
         </div>
         <div className='header__options'>
-          {headerOptionSettings.map((e, i) => <HeaderOption key={i} text={e.text} notification={e.notification}/>)}
+          {headerOptionSettings.map((e, i) => <HeaderOption key={i} text={e.text} notification={e.notification} dropdownItems={e.dropdown}/>)}
         </div>
 
       </div>
