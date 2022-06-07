@@ -4,21 +4,43 @@ import './Header.css';
 //icons
 import {AiOutlineStock} from 'react-icons/ai';
 import {FiSearch} from 'react-icons/fi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearUser } from '../../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
 //#00C805
 
 
 const HeaderOption = ({text, notification, dropdownItems}) => {
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const username = useSelector(state => state.user.username)
+
   const [dropdownActive, setDropdownActive] = useState(false)
 
-  const handleUsernameClick = () => {
+  const handleUsernameClick = (event) => {
+    let text = event.target.innerText
+    
+    if(text === "Messages" || text === "Portfolio"){
+      return
+    }
     setDropdownActive(!dropdownActive)
+  }
+
+  const handleDropdownOptionClick = (event) => {
+    let text = event.target.innerText
+    console.log(event)
+    if(text === "Log Out"){
+      dispatch(clearUser())
+    } else if (text === "Profile"){
+      navigate("/profile/" + username)
+    }
   }
 
 
   return (
-    <div className='headeroption'>
+    <div className='headeroption' style={{backgroundColor: dropdownActive ? "#383838" : "transparent"}}>
       <p className='headeroption__text' onClick={handleUsernameClick}>{text}</p>
       {notification && <div className='headeroption__icon'>
         <span className="material-symbols-outlined">
@@ -27,9 +49,9 @@ const HeaderOption = ({text, notification, dropdownItems}) => {
       </div>}
       {dropdownActive && <div className='dropdown__menu'> 
         {dropdownItems && dropdownItems.map((e, i) => (
-          <div className='dropdown__item'> 
+          <li key={i} className='dropdown__item' onClick={handleDropdownOptionClick}> 
             {e}
-          </div>
+          </li>
         ))}
       </div>}
 

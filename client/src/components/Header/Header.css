@@ -80,6 +80,8 @@
     width: fit-content;
     padding: 10px 15px 5px 15px;
     position: relative;
+    border-top-left-radius: 1em;
+    border-top-right-radius: 1em;
 }
 
 .headeroption__text:hover {
@@ -105,23 +107,27 @@
 }
 
 .dropdown__menu {
-    background-color: #181818;
+    background-color: #383838;
     color: white;
     min-width: 100%;
     width: fit-content;
     position: absolute;
-    top: 3em;
+    top: 2.5em;
     right: 0em;
     border-bottom-left-radius: 1em;
     border-bottom-right-radius: 1em;
+    padding: 0.5em 0 0 0;
+    border-top: 1px solid white;
 }
 
 .dropdown__item {
     padding: 0.5em 1em 0.5em 0.5em;
     display: flex;
     justify-content: right;
+
 }
 
 .dropdown__item:hover {
     color: #00C805;
 }
+
