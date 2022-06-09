@@ -24,3 +24,10 @@
     border-radius: 4px;
     padding: 0 0.5em 0 0.5em
 }
+
+.home__trades {
+    border-top: 1px solid gray;
+    margin-top: 1em;
+    padding: 1em 1em 0 1em;
+    height: 30em;
+}

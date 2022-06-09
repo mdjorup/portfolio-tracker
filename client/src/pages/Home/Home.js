@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Header from '../../components/Header/Header';
 import MainChart from '../../components/MainChart/MainChart';
 import StockSnippet from '../../components/StockSnippet/StockSnippet';
+import Trades from '../../components/Trade/Trades'
 
 
 
@@ -15,12 +16,15 @@ const Home = () => {
 
     const user = useSelector((state) => state.user)
 
+    let date = new Date("2022-06-07")
+
     return(
         <div className='home'>
             <Header /> 
             <div className='home__body'>
                 <div className='home__chart'>
                     <MainChart timeframes={["5d", "1m", "3m", "6m", "1y", "2y", "ALL"]}/>
+                    <Trades />
                 </div>
                 <div className="home__positions">
                     <StockSnippet ticker="AAPL" price={35000.763892} dayPercent={4.15023} dayDollar={10200.44443}/>
