@@ -1,0 +1,19 @@
+{
+    "TableName": "PortfolioUsers",
+    "KeySchema": [
+        {
+            "AttributeName": "Username",
+            "KeyType": "HASH"
+        }
+    ],
+    "AttributeDefinitions": [
+        {
+            "AttributeName": "Username",
+            "AttributeType": "S"
+        }
+    ],
+    "ProvisionedThroughput": {
+        "ReadCapacityUnits": 1,
+        "WriteCapacityUnits": 1
+    }
+}

@@ -1,5 +1,6 @@
 import json
 import os
+import boto3
 
 # import requests
 # for testing dynamo db locally: https://medium.com/@suranjana.basu/test-your-lambda-with-aws-dynamodb-offline-locally-2efc45063fed
@@ -15,6 +16,10 @@ verifyPath = "/auth/verify"
 
 
 def lambda_handler(event, context):
+
+    user_table = boto3.resource("dynamodb", endpoint_url="http://localhost:8000").Table(
+        "PortfolioUsers"
+    )
 
     path = event.get("path", "doesn't work")
     method = event.get("httpMethod", "doesn't work")

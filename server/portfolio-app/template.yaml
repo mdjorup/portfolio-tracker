@@ -24,10 +24,13 @@ Resources:
       Runtime: python3.9
       Architectures:
         - x86_64
+      Policies: AmazonDynamoDBFullAccess
       Environment:
         Variables:
           DB_PW: "PRnGBDeoZTxvgoqO"
           JWT_SECRET: "FwyGK@pyCThOBNsGebLZ"
+          TABLE_NAME: PortfolioUsers
+
       Events:
         Health: 
           Type: Api
@@ -49,4 +52,28 @@ Resources:
           Properties: 
             Path: /auth/verify
             Method: post
+  PortfolioUsersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: PortfolioUsers
+      AttributeDefinitions:
+        -
+          AttributeName: "Name"
+          AttributeType: "S"
+        -
+          AttributeName: "Username"
+          AttributeType: "S"
+        -
+          AttributeName: "Email"
+          AttributeType: "S"
+        -
+          AttributeName: "Password"
+          AttributeType: "S"
+      KeySchema:
+        -
+          AttributeName: "Username"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5
+        WriteCapacityUnits: 5
 
